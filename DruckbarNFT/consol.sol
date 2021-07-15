@@ -155,7 +155,7 @@ contract transferContract is ERC721Holder, Ownable {
 		}
 	}
 
-    function completeTransfer(address from_, address to_, uint256 tokenId_) 
+    function completeTransfer() 
         public
         onlyTo
         inState(State.Release)
@@ -167,7 +167,7 @@ contract transferContract is ERC721Holder, Ownable {
         
         GameItem GI = GameItem(address(owner()));
         
-        GI.transfer(from_, to_, tokenId_);
+        GI.transfer(address(this), to, tokenId);
         
         return success;
 
